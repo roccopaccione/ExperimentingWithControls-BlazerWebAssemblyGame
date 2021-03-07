@@ -10,7 +10,7 @@
         </div>
         <div class="col-sm-6">
             <input type="text" placeholder="Enter text"
-                   @onchange="UpdateValue" />
+                   @onchange="UpdateNumericValue" />
         </div>
     </div>
     <div class="row mt-2">
@@ -23,7 +23,7 @@
     </div>
     <div class="row mt-5">
         <h2>
-            Here's the value: <strong>@DispalyValue</strong>
+            Here's the value: <strong>@DisplayValue</strong>
         </h2>
     </div>
 </div>
@@ -32,10 +32,18 @@
 @code
 {
 
-    private string DispalyValue = "";
+    private string DisplayValue = "";
 
     private void UpdateValue(ChangeEventArgs e)
     {
-        DispalyValue = e.Value.ToString();
+        DisplayValue = e.Value.ToString();
+    }
+
+    private void UpdateNumericValue(ChangeEventArgs e)
+    {
+        if(int.TryParse(e.Value.ToString(), out int result))
+        {
+            DisplayValue = e.Value.ToString();
+        }
     }
 }
