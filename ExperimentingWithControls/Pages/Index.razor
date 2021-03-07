@@ -10,11 +10,23 @@
         </div>
     </div>
     <div class="col-sm-6">
-        <input type="range" />
+        <input type="range" @onchange="UpdateValue" />
     </div>
     <div class="row mt-5">
         <h2>
-            Here's the value:
+            Here's the value: <strong>@DispalyValue</strong>
         </h2>
     </div>
 </div>
+
+
+@code
+{
+
+    private string DispalyValue = "";
+
+    private void UpdateValue(ChangeEventArgs e)
+    {
+        DispalyValue = e.Value.ToString();
+    }
+}
